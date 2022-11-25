@@ -1,12 +1,12 @@
 import numpy
 import pygame
 import random
-
-
+# from numba import jit
 
 
 class Grid:
     """Grid class"""
+    # @jit    
     def __init__(self, width, height, scale, offset):
         
         self.columns = int(height//scale)
@@ -15,14 +15,14 @@ class Grid:
         self.offset = offset
         self.size = (self.rows, self.columns)
         self.grid_array = numpy.ndarray(shape=(self.size)) 
-        
-        
+    
+    # @jit  
     def random2d_array(self):
         for x in range(self.rows):
             for y in range(self.columns):
                 self.grid_array[x][y] = random.randint(0,1)
-                
-                
+     
+    # @jit           
     def Conway(self, off_color, on_color, surface, pause):
         for x in range(self.rows):
             for y in range(self.columns):
@@ -49,8 +49,8 @@ class Grid:
                         next[x][y] = state
             self.grid_array = next
                     
-                    
-                    
+     
+    # @jit(nopython=False)                        
     def get_neighbours(self, x, y):
         total = 0
         for n in range(-1, 2):

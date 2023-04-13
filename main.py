@@ -17,12 +17,12 @@ black = (0,0,0)
 white = (255, 255, 255)
 dark_blue = (10, 10, 60)
 
-scale = 2 # scale-offset would be the actual width/height of each cell
-offset = 0 # for spacing between cells
+scale = 20 # scale-offset would be the actual width/height of each cell
+offset = 1 # for spacing between cells
 
 
 Grid = grid.Grid(width, height, scale, offset)
-Grid.random2d_array()
+
 
 pause = False
 frame_count = 0
@@ -50,8 +50,8 @@ while True:
         x_pos, y_pos = pygame.mouse.get_pos()
         Grid.handle_mouse(x_pos, y_pos)
         
-    frame_count += 1
-    filename = "captures/%04d.png" % ( frame_count ) # name with four decimals
-    pygame.image.save( screen, filename )
+    # frame_count += 1
+    # filename = "captures/%04d.png" % ( frame_count ) # name with four decimals
+    # pygame.image.save( screen, filename )
     
     pygame.display.flip()

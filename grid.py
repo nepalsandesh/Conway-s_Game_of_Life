@@ -14,13 +14,18 @@ class Grid:
         self.scale = scale
         self.offset = offset
         self.size = (self.rows, self.columns)
+        
         self.grid_array = numpy.ndarray(shape=(self.size)) 
+        # print(self.grid_array.shape)
+        # self.random2d_array()
+        self.grid_array = numpy.random.randint(0,2, size=(self.size))
     
-    # @jit  
-    def random2d_array(self):
-        for x in range(self.rows):
-            for y in range(self.columns):
-                self.grid_array[x][y] = random.randint(0,1)
+    # # @jit  
+    # def random2d_array(self):
+    #     for x in range(self.rows):
+    #         for y in range(self.columns):
+    #             self.grid_array[x,y] = random.randint(0,1)
+    #     print("After fx, shape = {}".format(self.grid_array.shape))
      
     # @jit           
     def Conway(self, off_color, on_color, surface, pause):
@@ -64,8 +69,7 @@ class Grid:
     def handle_mouse(self, x, y):
         _x = x//self.scale
         _y = y//self.scale
-
-        
+                
         if self.grid_array[_x][_y] != None:
             self.grid_array[_x][_y] = 1
     
